@@ -7,8 +7,6 @@ var formSubmitHandler = function (event) {
 
   var searchText = searchBoxEl.value.trim();
   var formType = formEl.value;
-  console.log(formType);
-  console.log(searchText);
 
   if (searchText) {
     searchLibrary(searchText, formType);
@@ -18,19 +16,24 @@ var formSubmitHandler = function (event) {
 };
 
 var searchLibrary = function (searchText, formType) {
-  var apiUrl = "https://www.loc.gov/" + formType + "/?q=" + searchText;
+  var apiUrl = "https://www.loc.gov/" + formType + "/?q=" + searchText + "&fo=json";
 
   console.log(apiUrl);
 
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
       response.json().then(function (data) {
-        displaySearch(data, formType, searchText);
+        //displaySearch(data, formType, searchText);
+        console.log(data);
       });
     } else {
       alert("Error: " + reponse.statusText);
     }
   });
 };
+
+var displaySearch = function (data, formtype, searchText) {
+
+}
 
 submitButton.addEventListener("click", formSubmitHandler);
