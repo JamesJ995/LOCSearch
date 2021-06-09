@@ -1,0 +1,2 @@
+# LOCSearch
+mini project
